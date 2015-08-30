@@ -10,10 +10,22 @@ import android.util.Log;
  * Created by LLL on 15/8/30.
  */
 public class MyService extends Service {
+    private DownloadBinder mBinder = new DownloadBinder();
+
+    class DownloadBinder extends Binder {
+        public void startDownload(){//Stimulating function
+            Log.d("MyService","Download Started");
+        }
+
+        public int getProgress() {
+            Log.d("MyService","Progress Gotten");
+            return 0;
+        }
+    }
 
     @Override
     public IBinder onBind(Intent intent){
-        return null;
+        return mBinder;
     }
 
     @Override
