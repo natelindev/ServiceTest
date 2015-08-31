@@ -1,10 +1,12 @@
 package com.example.lll.servicetest;
 
+import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Build;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -30,6 +32,7 @@ public class MyService extends Service {
         return mBinder;
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onCreate() {
         super.onCreate();
@@ -46,6 +49,7 @@ public class MyService extends Service {
 
     @Override
     public int onStartCommand(Intent intent,int flags,int startId){
+
         Log.d("MyService","Service Started");
         return super.onStartCommand(intent,flags,startId);
     }
