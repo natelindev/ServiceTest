@@ -1,5 +1,7 @@
 package com.example.lll.servicetest;
 
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
@@ -31,6 +33,14 @@ public class MyService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        Notification notification = new Notification.Builder(this)
+                .setContentTitle("This is Tittle")
+                .setContentText("This is content")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .build();
+        Intent notificationIntent = new Intent(this,MainActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
+        startForeground(1,notification);
         Log.d("MyService","Service Created");
     }
 
